@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.page-actions-container {
+    height: 48px;
+    background-color: #218c74;
+    display: flex;
+    align-items: flex-end;
+}
+
+.page-action {
+    margin: 8px;
+    color: #f1f2f6;
+}
+
+.cellprop-actions-container {
+    height: 48px;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+}
+
+.cellprop-actions-container > * {
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.cellprop-actions-container > select {
+    border: none;
+    border-radius: 2px;
+    outline: none;
+}
+
+.font-family-prop {
+    padding: 3.2px;
+}
+
+.font-size-prop {
+    padding: 3.2px;
+}
+
+.formula-actions-container {
+    height: 48px;
+    background-color: lightgreen;
+}
+
+.sheet-actions-container {
+    height: 48px;
+    background-color: lightpink;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+} 
+
+.sheet-actions-container > * {
+    display: inline-block;
+}
+
+.sheet-add-icon-container {
+    width: 2vw;
+}
+
+.sheet-folder-container {
+    height: 80%;
+    width: calc(100vw - 2vw);
+    background-color: yellow;
+}
+
+.grid-container {
+    height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
+    background-color: lightgray;
+}
