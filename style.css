@@ -73,6 +73,7 @@ body {
 
 .address-bar {
     width: 64px;
+    text-align: center;
 }
 
 .formula-bar {
@@ -112,5 +113,67 @@ body {
 
 .grid-container {
     height: calc(100vh - 3rem - 3rem - 3rem - 2rem);
-    background-color: lightgray;
+    background-color: #ecf0f1;
+    position: relative;
+    overflow: auto;
+}
+
+.top-left-corner-cell {
+    height: 32px;
+    width: 32px;
+    background-color: #747d8c;
+    position: fixed;
+    z-index: 2;
+}
+
+.address-col-container {
+    position: sticky;
+    top: 32px;
+    left: 0px;
+}
+
+.address-row-container {
+    height: 32px;
+    display: flex;
+    position: sticky;
+    left: 32px;
+    top: 0px;
+}
+
+.cells-container {
+    position: absolute;
+    top: 0;
+    left: 32px;
+}
+
+.address-col {
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    border: 1px solid #dfe4ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address-row {
+    height: 32px;
+    width: 80px;
+    text-align: center;
+    border: 1px solid #dfe4ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-cell {
+    height: 32px;
+    display: flex;
+}
+
+.col-cell {
+    height: 32px;
+    width: 80px;
+    border: 1px solid #dfe4ea;
+    outline: none;
 }
