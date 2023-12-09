@@ -31,7 +31,13 @@ for(let rowIndex=0; rowIndex < maxRows; rowIndex++) {
         let colElement = document.createElement("div");
         colElement.setAttribute("class", "col-cell");
         colElement.setAttribute("contentEditable", true);
+        
+        colElement.setAttribute("rId", rowIndex);
+        colElement.setAttribute("cId", colIndex);
+        
+        colElement.setAttribute("spellcheck", "false");
         rowElement.appendChild(colElement);
+
         addListenerForAddressBarDisplay(colElement, rowIndex, colIndex);
     }
     cellContainerElement.appendChild(rowElement);
@@ -45,3 +51,7 @@ function addListenerForAddressBarDisplay(colElement, rowIndex, colIndex) {
         addressBarElement.value = `${colId}${rowId}`;
     })
 }
+
+// default active cell
+let firstColCell = document.querySelector(".col-cell");
+firstColCell.click();
