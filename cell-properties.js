@@ -11,7 +11,10 @@ for(let rowIndex=0; rowIndex < maxRows; rowIndex++) {
             fontFamily: "sans-serif",
             fontSize: "14",
             fontColor: "#000000",
-            bgColor: ""
+            bgColor: "#ecf0f1",
+            value: "",
+            formula: "",
+            children: []
         };
         sheetRow.push(cellProperty);
     }
@@ -176,6 +179,9 @@ function addListenerToAttachCellProperties(cell) {
                 rightAlign.style.backgroundColor = activeColorProp;
                 break;
         }
+        let formulaBarElement = document.querySelector(".formula-bar");
+        formulaBarElement.value = cellProp.formula;
+        cell.value = cellProp.value;
     })
 }
 
