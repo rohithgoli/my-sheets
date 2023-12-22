@@ -29,14 +29,54 @@ formulaBarElement.addEventListener("keydown", (event) => {
         if(inputFormula !== cellProp.formula) {
             removeChildFromParent(cellProp.formula);
         }
+
+        addChildToGraphComponent(inputFormula, address);
+        // check formula for cyclic condition before evaluation
+        let isCyclic = isGraphCyclic();
+        if (isCyclic === true) {
+            alert("Your Formula is Cyclic !!!");
+            removeChildFromGraphComponent(inputFormula, address);
+            return;
+        }
         
         let evaluatedValue = evaluateFormula(inputFormula);
-        
+
         setEvaluatedFormulaValueToCellUIAndCellProp(address, evaluatedValue, inputFormula);
         addChildToParent(inputFormula);
         updateChildrenCells(address);
     }
 })
+
+
+function addChildToGraphComponent(formula, childAddress) {
+    let [childRowId, childColId] = extractRowIdColIdFromAddress(childAddress);
+
+    let encodedFormula = formula.split(" ");
+    for(let index=0; index < encodedFormula.length; index++) {
+        let asciiValueFirstIndex = encodedFormula[index].charCodeAt(0);
+        if (asciiValueFirstIndex >= 65 && asciiValueFirstIndex <= 90) {
+            let [parentRowId, parentColId] = extractRowIdColIdFromAddress(encodedFormula[index]);
+            // B1 = A1 + 30
+            // Here, A1 is parent & B1 is child
+            graphComponentMatrix[parentRowId][parentColId].push([childRowId, childColId]);
+        }
+    }
+}
+
+
+function removeChildFromGraphComponent(formula, childAddress) {
+    let [childRowId, childColId] = extractRowIdColIdFromAddress(childAddress);
+
+    let encodedFormula = formula.split(" ");
+    for(let index=0; index < encodedFormula.length; index++) {
+        let asciiValueFirstIndex = encodedFormula[index].charCodeAt(0);
+        if(asciiValueFirstIndex >= 65 && asciiValueFirstIndex <= 90) {
+            let [parentRowId, parentColId] = extractRowIdColIdFromAddress(encodedFormula[index]);
+            graphComponentMatrix[parentRowId][parentColId].pop();
+        }
+    }
+}
+
 
 function updateChildrenCells(parentAddress) {
     let [parentCell, parentCellProp] = getActiveCellAndProperties(parentAddress);
