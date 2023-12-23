@@ -34,12 +34,12 @@ function isGraphCyclic(graphComponentMatrix) {
             if (visited[rowIndexNode][colIndexNode] === false) {
                 let response = dfsCycleDetection(graphComponentMatrix, rowIndexNode, colIndexNode, visited, dfsVisitedStackTrace);
                 if (response === true) {
-                    return true;
+                    return [rowIndexNode, colIndexNode];
                 }
             }
         }
     }
-    return false;
+    return null;
 }
 
 // Start --> visited(true), dfsVisited(true)
