@@ -32,7 +32,7 @@ formulaBarElement.addEventListener("keydown", (event) => {
 
         addChildToGraphComponent(inputFormula, address);
         // check formula for cyclic condition before evaluation
-        let isCyclic = isGraphCyclic();
+        let isCyclic = isGraphCyclic(graphComponentMatrix);
         if (isCyclic === true) {
             alert("Your Formula is Cyclic !!!");
             removeChildFromGraphComponent(inputFormula, address);
